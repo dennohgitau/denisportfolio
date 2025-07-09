@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmailJS Configuration Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #1a1a1a;
+            color: #fff;
+        }
+        .test-section {
+            background: #2a2a2a;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            border: 1px solid #444;
+        }
+        .success { color: #4CAF50; }
+        .error { color: #f44336; }
+        .info { color: #2196F3; }
+        .warning { color: #ff9800; }
+        button {
+            background: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px 5px;
+        }
+        button:hover { background: #45a049; }
+        button:disabled { background: #666; cursor: not-allowed; }
+        .log {
+            background: #000;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            max-height: 300px;
+            overflow-y: auto;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 EmailJS Configuration Test</h1>
+    
+    <div class="test-section">
+        <h2>📋 Configuration Status</h2>
+        <div id="config-status">Loading...</div>
+    </div>
+    
+    <div class="test-section">
+        <h2>🔧 Test EmailJS</h2>
+        <button onclick="testConfiguration()">Test Configuration</button>
+        <button onclick="testEmailSending()">Test Email Sending</button>
+        <button onclick="clearLog()">Clear Log</button>
+    </div>
+    
+    <div class="test-section">
+        <h2>📝 Test Log</h2>
+        <div id="log" class="log"></div>
+    </div>
+
+    <!-- EmailJS Library -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    
+    <script type="module">
+        import emailjsConfig from './emailjs-config.js';
+        
+        // Global functions for testing
+        window.testConfiguration = function() {
+            log('🧪 Testing EmailJS Configuration...', 'info');
+            
+            const status = emailjsConfig.getStatus();
+            log(`📋 Configuration Status: ${JSON.stringify(status, null, 2)}`, 'info');
+            
+            if (emailjsConfig.isValid()) {
+                log('✅ EmailJS configuration is valid', 'success');
+                
+                if (typeof emailjs !== 'undefined') {
+                    log('✅ EmailJS library is loaded', 'success');
+                    
+                    if (emailjsConfig.init()) {
+                        log('✅ EmailJS initialized successfully', 'success');
+                        log('🎉 All configuration tests passed!', 'success');
+                    } else {
+                        log('❌ Failed to initialize EmailJS', 'error');
+                    }
+                } else {
+                    log('❌ EmailJS library not loaded', 'error');
+                }
+            } else {
+                log('❌ EmailJS configuration is invalid', 'error');
+                log('🔧 Please check your .env file and emailjs-config.js', 'warning');
+            }
+        };
+        
+        window.testEmailSending = function() {
+            log('📧 Testing email sending...', 'info');
+            
+            if (!emailjsConfig.isValid()) {
+                log('❌ EmailJS not configured properly', 'error');
+                return;
+            }
+            
+            const testFormData = new FormData();
+            testFormData.append('fullname', 'Test User');
+            testFormData.append('email', 'test@example.com');
+            testFormData.append('phone', '+1234567890');
+            testFormData.append('subject', 'Test Email from Portfolio');
+            testFormData.append('message', 'This is a test email from the portfolio contact form configuration test.');
+            
+            log('📤 Sending test email...', 'info');
+            
+            emailjsConfig.sendEmail(testFormData)
+                .then(function(response) {
+                    log('✅ Test email sent successfully!', 'success');
+                    log(`Response: ${JSON.stringify(response)}`, 'info');
+                })
+                .catch(function(error) {
+                    log('❌ Test email failed', 'error');
+                    log(`Error: ${error.message || error}`, 'error');
+                });
+        };
+        
+        window.clearLog = function() {
+            document.getElementById('log').innerHTML = '';
+        };
+        
+        function log(message, type = 'info') {
+            const logDiv = document.getElementById('log');
+            const timestamp = new Date().toLocaleTimeString();
+            const className = type === 'success' ? 'success' : type === 'error' ? 'error' : type === 'warning' ? 'warning' : 'info';
+            
+            logDiv.innerHTML += `<div class="${className}">[${timestamp}] ${message}</div>`;
+            logDiv.scrollTop = logDiv.scrollHeight;
+        }
+        
+        // Auto-test on load
+        window.addEventListener('load', function() {
+            log('🚀 EmailJS Configuration Test Loaded', 'info');
+            
+            // Update config status
+            const status = emailjsConfig.getStatus();
+            const statusDiv = document.getElementById('config-status');
+            statusDiv.innerHTML = `
+                <div class="${status.configured ? 'success' : 'error'}">
+                    <strong>Configuration:</strong> ${status.configured ? 'Valid' : 'Invalid'}
+                </div>
+                <div><strong>Public Key:</strong> ${status.publicKey}</div>
+                <div><strong>Service ID:</strong> ${status.serviceId}</div>
+                <div><strong>Template ID:</strong> ${status.templateId}</div>
+                <div><strong>Environment:</strong> ${status.environment}</div>
+            `;
+        });
+    </script>
+</body>
+</html> 
