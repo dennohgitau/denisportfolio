@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" role="img" aria-label="Monarch direct motor issuance">
+  <defs>
+    <linearGradient id="bgb" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#0f1624"/>
+      <stop offset="100%" style="stop-color:#152238"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4ade80"/>
+      <stop offset="100%" style="stop-color:#22c55e"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="240" fill="url(#bgb)"/>
+  <rect x="24" y="24" width="352" height="192" rx="12" fill="none" stroke="url(#accent)" stroke-width="2" opacity="0.85"/>
+  <text x="200" y="95" text-anchor="middle" fill="#ecfdf5" font-family="system-ui,sans-serif" font-size="22" font-weight="600">BIMA motor issuance</text>
+  <text x="200" y="128" text-anchor="middle" fill="#86efac" font-family="system-ui,sans-serif" font-size="15" font-weight="600">Direct customer journeys</text>
+  <text x="200" y="175" text-anchor="middle" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="12">M-Pesa " DMVIC workers " Idempotent rails</text>
+</svg>
