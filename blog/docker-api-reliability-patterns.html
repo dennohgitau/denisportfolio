@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Docker Patterns for API Reliability</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    body { padding: 24px; }
+    .article-wrap { max-width: 900px; margin: 0 auto; }
+    .article-card { background: var(--eerie-black-2); border: 1px solid var(--jet); border-radius: 16px; padding: 28px; }
+    .article-meta { display: flex; gap: 10px; color: var(--light-gray-70); font-size: var(--fs-7); }
+    .article-card h2 { margin: 18px 0 10px; color: var(--white-2); font-size: var(--fs-3); }
+    .article-card p, .article-card li { color: var(--light-gray); line-height: 1.75; }
+    .article-card ul { padding-left: 18px; }
+    .back-link { display: inline-block; margin: 0 0 16px; }
+  </style>
+</head>
+<body>
+  <main class="article-wrap">
+    <a class="back-link" href="../index.html">← Back to portfolio</a>
+    <article class="article-card">
+      <div class="article-meta"><span>Containers</span><span>•</span><time datetime="2025-11-24">Nov 24, 2025</time></div>
+      <h1>Containerize Like You Mean It: Docker Patterns for API Reliability</h1>
+      <p>Production Docker usage is more than running an image. It is about deterministic, secure, observable, and recoverable services.</p>
+      <h2>Patterns That Hold Up</h2>
+      <ul>
+        <li>Deterministic builds and pinned dependencies.</li>
+        <li>Minimal image footprint and secret-safe runtime configuration.</li>
+        <li>Health checks and readiness gates for predictable orchestration behavior.</li>
+        <li>Environment parity across local, staging, and production.</li>
+      </ul>
+      <h2>Why It Matters</h2>
+      <p>Container discipline reduces deployment surprises, shortens incident triage, and improves confidence when scaling API workloads.</p>
+    </article>
+  </main>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How We Built a Production Motor Insurance Flow</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    body { padding: 24px; }
+    .article-wrap { max-width: 900px; margin: 0 auto; }
+    .article-card { background: var(--eerie-black-2); border: 1px solid var(--jet); border-radius: 16px; padding: 28px; }
+    .article-hero { width: 100%; border-radius: 14px; margin: 16px 0 20px; }
+    .article-meta { display: flex; gap: 10px; align-items: center; color: var(--light-gray-70); font-size: var(--fs-7); }
+    .article-card h1 { margin: 8px 0 12px; }
+    .article-card h2 { margin: 18px 0 10px; color: var(--white-2); font-size: var(--fs-3); }
+    .article-card p, .article-card li { color: var(--light-gray); line-height: 1.75; }
+    .article-card ul { padding-left: 18px; }
+    .back-link { display: inline-block; margin: 0 0 16px; }
+  </style>
+</head>
+<body>
+  <main class="article-wrap">
+    <a class="back-link" href="../index.html">← Back to portfolio</a>
+    <article class="article-card">
+      <div class="article-meta">
+        <span>Insurtech Architecture</span><span>•</span><time datetime="2026-04-16">Apr 16, 2026</time>
+      </div>
+      <h1>How We Built a Production Motor Insurance Flow: TPO/TOR to Certificate Issuance</h1>
+      <img class="article-hero" src="../assets/images/monarch-bima.svg" alt="Monarch direct motor insurance architecture">
+      <p>
+        Building insurance software in production is different from demo-grade fintech. Every state transition matters:
+        acquisition input quality, payment confirmation, certificate issuance, policy payload alignment, and auditability.
+        This post shares the architecture and execution patterns that make this reliable under real traffic.
+      </p>
+      <h2>Architecture Overview</h2>
+      <ul>
+        <li>React front-end for guided TPO/TOR acquisition with clear vehicle and cover selection.</li>
+        <li>Node/Express API layer with strict validation and traceable transaction states.</li>
+        <li>PostgreSQL as source of truth for payment and issuance lifecycle state.</li>
+        <li>Redis + BullMQ workers for asynchronous DMVIC issuance and controlled concurrency.</li>
+      </ul>
+      <h2>Why Async Issuance Matters</h2>
+      <p>
+        Certificate issuance can involve external registries with variable latency. Keeping issuance asynchronous prevents
+        checkout from blocking and allows retries, backoff, and throttling. This gives a better customer experience while
+        protecting upstream services.
+      </p>
+      <h2>Production Disciplines That Reduced Risk</h2>
+      <ul>
+        <li>Database-level idempotency constraints on successful payment confirmations.</li>
+        <li>Smoke and reconciliation workflows for deployment and post-payment validation.</li>
+        <li>Operational dashboards around queue health, callback failures, and issuance lag.</li>
+      </ul>
+      <h2>Outcome</h2>
+      <p>
+        The key result was a system that remained fast for end users, observable for engineering, and defensible for
+        finance, audit, and compliance teams. In regulated products, reliability is the product.
+      </p>
+    </article>
+  </main>
+</body>
+</html>

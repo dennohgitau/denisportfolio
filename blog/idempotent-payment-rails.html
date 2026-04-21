@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Designing Idempotent Payment Rails in Insurance</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    body { padding: 24px; }
+    .article-wrap { max-width: 900px; margin: 0 auto; }
+    .article-card { background: var(--eerie-black-2); border: 1px solid var(--jet); border-radius: 16px; padding: 28px; }
+    .article-hero { width: 100%; border-radius: 14px; margin: 16px 0 20px; }
+    .article-meta { display: flex; gap: 10px; align-items: center; color: var(--light-gray-70); font-size: var(--fs-7); }
+    .article-card h1 { margin: 8px 0 12px; }
+    .article-card h2 { margin: 18px 0 10px; color: var(--white-2); font-size: var(--fs-3); }
+    .article-card p, .article-card li { color: var(--light-gray); line-height: 1.75; }
+    .article-card ul { padding-left: 18px; }
+    .back-link { display: inline-block; margin: 0 0 16px; }
+  </style>
+</head>
+<body>
+  <main class="article-wrap">
+    <a class="back-link" href="../index.html">← Back to portfolio</a>
+    <article class="article-card">
+      <div class="article-meta">
+        <span>Payments Engineering</span><span>•</span><time datetime="2026-03-28">Mar 28, 2026</time>
+      </div>
+      <h1>Designing Idempotent Payment Rails in Insurance: Pesapal, M-Pesa, and Bank Verification</h1>
+      <img class="article-hero" src="../assets/images/monarch-agent.svg" alt="Agent and direct channel payment reliability">
+      <p>
+        Payment systems in the real world are noisy: users retry, callbacks arrive late, polling races happen, and providers
+        occasionally return conflicting snapshots. In insurance, this can never create duplicate successful covers.
+      </p>
+      <h2>Common Failure Modes</h2>
+      <ul>
+        <li>Duplicate callbacks from providers after intermittent network failures.</li>
+        <li>User-triggered retries when redirect pages lag.</li>
+        <li>Asynchronous verification arriving after front-end timeout windows.</li>
+      </ul>
+      <h2>Idempotency Strategy</h2>
+      <ul>
+        <li>Database uniqueness rules around provider confirmation codes and successful final states.</li>
+        <li>Clear payment state machine transitions (pending, verifying, paid, failed, issued).</li>
+        <li>Server-side callback verification plus authoritative refresh via polling APIs.</li>
+      </ul>
+      <h2>Operational Guardrails</h2>
+      <p>
+        We maintained fast checkout while preserving audit quality by storing raw provider responses, normalizing key fields,
+        and reconciling against internal state. This allows finance and underwriting to review evidence without guessing.
+      </p>
+    </article>
+  </main>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Designing Idempotent Payment Rails in Insurance</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    body { padding: 24px; }
+    .article-wrap { max-width: 900px; margin: 0 auto; }
+    .article-card { background: var(--eerie-black-2); border: 1px solid var(--jet); border-radius: 16px; padding: 28px; }
+    .article-hero { width: 100%; border-radius: 14px; margin: 16px 0 20px; }
+    .article-meta { display: flex; gap: 10px; align-items: center; color: var(--light-gray-70); font-size: var(--fs-7); }
+    .article-card h1 { margin: 8px 0 12px; }
+    .article-card h2 { margin: 18px 0 10px; color: var(--white-2); font-size: var(--fs-3); }
+    .article-card p, .article-card li { color: var(--light-gray); line-height: 1.75; }
+    .article-card ul { padding-left: 18px; }
+    .back-link { display: inline-block; margin: 0 0 16px; }
+  </style>
+</head>
+<body>
+  <main class="article-wrap">
+    <a class="back-link" href="../index.html">← Back to portfolio</a>
+    <article class="article-card">
+      <div class="article-meta">
+        <span>Payments Engineering</span><span>•</span><time datetime="2026-03-28">Mar 28, 2026</time>
+      </div>
+      <h1>Designing Idempotent Payment Rails in Insurance: Pesapal, M-Pesa, and Bank Verification</h1>
+      <img class="article-hero" src="../assets/images/monarch-agent.svg" alt="Agent and direct channel payment reliability">
+      <p>
+        Payment systems in the real world are noisy: users retry, callbacks arrive late, polling races happen, and providers
+        occasionally return conflicting snapshots. In insurance, this can never create duplicate successful covers.
+      </p>
+      <h2>Common Failure Modes</h2>
+      <ul>
+        <li>Duplicate callbacks from providers after intermittent network failures.</li>
+        <li>User-triggered retries when redirect pages lag.</li>
+        <li>Asynchronous verification arriving after front-end timeout windows.</li>
+      </ul>
+      <h2>Idempotency Strategy</h2>
+      <ul>
+        <li>Database uniqueness rules around provider confirmation codes and successful final states.</li>
+        <li>Clear payment state machine transitions (pending, verifying, paid, failed, issued).</li>
+        <li>Server-side callback verification plus authoritative refresh via polling APIs.</li>
+      </ul>
+      <h2>Operational Guardrails</h2>
+      <p>
+        We maintained fast checkout while preserving audit quality by storing raw provider responses, normalizing key fields,
+        and reconciling against internal state. This allows finance and underwriting to review evidence without guessing.
+      </p>
+    </article>
+  </main>
+</body>
+</html>

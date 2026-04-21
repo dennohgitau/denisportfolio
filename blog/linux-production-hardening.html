@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Linux in Production: Hardening and Stability</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    body { padding: 24px; }
+    .article-wrap { max-width: 900px; margin: 0 auto; }
+    .article-card { background: var(--eerie-black-2); border: 1px solid var(--jet); border-radius: 16px; padding: 28px; }
+    .article-meta { display: flex; gap: 10px; color: var(--light-gray-70); font-size: var(--fs-7); }
+    .article-card h2 { margin: 18px 0 10px; color: var(--white-2); font-size: var(--fs-3); }
+    .article-card p, .article-card li { color: var(--light-gray); line-height: 1.75; }
+    .article-card ul { padding-left: 18px; }
+    .back-link { display: inline-block; margin: 0 0 16px; }
+  </style>
+</head>
+<body>
+  <main class="article-wrap">
+    <a class="back-link" href="../index.html">← Back to portfolio</a>
+    <article class="article-card">
+      <div class="article-meta"><span>Infrastructure Security</span><span>•</span><time datetime="2025-12-18">Dec 18, 2025</time></div>
+      <h1>Linux in Production: Baselines, Hardening, and Practical Incident Reduction</h1>
+      <p>This article focuses on repeatable controls that reduce operational noise and improve recovery confidence in Linux estates.</p>
+      <h2>Baseline Controls</h2>
+      <ul>
+        <li>Account and privilege hygiene with least-privilege access.</li>
+        <li>Patch cadence and maintenance windows aligned to risk.</li>
+        <li>Service segmentation and firewall policies by workload.</li>
+        <li>Centralized logs and actionable alerts, not alert storms.</li>
+      </ul>
+      <h2>Result</h2>
+      <p>Hardening is most effective when paired with operational discipline: clear runbooks, ownership, and measurement of incident trends over time.</p>
+    </article>
+  </main>
+</body>
+</html>

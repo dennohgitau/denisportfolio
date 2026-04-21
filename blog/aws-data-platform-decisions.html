@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AWS Data Platform: From Events to Decisions</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    body { padding: 24px; }
+    .article-wrap { max-width: 900px; margin: 0 auto; }
+    .article-card { background: var(--eerie-black-2); border: 1px solid var(--jet); border-radius: 16px; padding: 28px; }
+    .article-meta { display: flex; gap: 10px; color: var(--light-gray-70); font-size: var(--fs-7); }
+    .article-card h2 { margin: 18px 0 10px; color: var(--white-2); font-size: var(--fs-3); }
+    .article-card p, .article-card li { color: var(--light-gray); line-height: 1.75; }
+    .article-card ul { padding-left: 18px; }
+    .back-link { display: inline-block; margin: 0 0 16px; }
+  </style>
+</head>
+<body>
+  <main class="article-wrap">
+    <a class="back-link" href="../index.html">← Back to portfolio</a>
+    <article class="article-card">
+      <div class="article-meta"><span>Cloud & Data</span><span>•</span><time datetime="2026-01-31">Jan 31, 2026</time></div>
+      <h1>From Events to Decisions: Building an AWS Data Platform with Glue, Redshift, and QuickSight</h1>
+      <p>Trustworthy dashboards require disciplined upstream design. This post outlines a practical pattern for building decision-grade analytics on AWS.</p>
+      <h2>Reference Architecture</h2>
+      <ul>
+        <li>Landing and curated layers in S3 with schema control.</li>
+        <li>AWS Glue jobs for repeatable ETL and data quality checks.</li>
+        <li>Redshift models optimized for query performance and governance.</li>
+        <li>QuickSight dashboards with business-level metric definitions.</li>
+      </ul>
+      <h2>Governance Matters</h2>
+      <p>Without data contracts and ownership boundaries, BI turns into argument. Good governance ensures leadership trusts trend lines enough to act on them.</p>
+    </article>
+  </main>
+</body>
+</html>
